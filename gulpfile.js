@@ -128,7 +128,7 @@ function logSuccess (msg) {
  */
 
 function inc (importance) {
-  return gulp.src(pkg)
+  return gulp.src(packageJSON)
     .pipe(bump({type: importance}))
     .pipe(gulp.dest('./'))
     .pipe(git.commit('bumps version'))
