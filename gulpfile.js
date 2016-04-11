@@ -56,8 +56,7 @@ gulp.task('package:copy-files', function () {
 
 // 納品用ビルド済みファイルを作成
 gulp.task('package:build', function (cb) {
-  return del(destFilesDir, { force: true }, function (err) {
-    if (err) return cb(err)
+  del(destFilesDir, { force: true }).then(function (paths) {
     runSequence('build', 'package:copy-files', cb)
   })
 })
