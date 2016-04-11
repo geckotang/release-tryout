@@ -132,6 +132,7 @@ function inc (importance) {
     .pipe(gulp.dest('./'))
     .pipe(git.commit('bumps version'))
     .pipe(tag())
+    .pipe(git.push('origin', 'master', {args: '--tags'}))
 }
 
 gulp.task('tag:patch', function () { return inc('patch') })
