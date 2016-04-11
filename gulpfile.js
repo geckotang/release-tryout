@@ -36,7 +36,7 @@ var destSourceDir = path.join(packageDir, packageSource, 'source')
 // GitHubにリリースを作成する
 gulp.task('release', ['package'], function () {
   var config = require('./config.json')
-  return gulp.src('./dist/' + packageZip)
+  return gulp.src(packageDir + packageZip)
     .pipe(release({
       token: config.token,
       manifest: pkg
