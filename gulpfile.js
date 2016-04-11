@@ -27,7 +27,7 @@ gulp.task('build', function () {
 //
 // Production Tasks
 //
-var packageDir = __dirname + '/package'
+var packageDir = path.join(__dirname, '/package')
 var packageSource = 'archive'
 var packageZip = 'archive-' + pkg.version + '.zip'
 var destFilesDir = path.join(packageDir, packageSource, 'build')
@@ -36,7 +36,7 @@ var destSourceDir = path.join(packageDir, packageSource, 'source')
 // GitHubにリリースを作成する
 gulp.task('release', ['package'], function () {
   var config = require('./config.json')
-  return gulp.src(packageDir + packageZip)
+  return gulp.src(path.join(packageDir, packageZip))
     .pipe(release({
       token: config.token,
       manifest: pkg
