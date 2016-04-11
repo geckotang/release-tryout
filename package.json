@@ -1,0 +1,27 @@
+{
+  "private": true,
+  "version": "v0.0.0",
+  "scripts": {
+    "gulp": "gulp",
+    "build": "gulp build",
+    "release": "gulp release",
+    "tag:patch": "gulp tag:patch",
+    "tag:feature": "gulp tag:feature",
+    "tag:release": "gulp tag:release"
+  },
+  "repository": {
+    "url": "https://github.com/geckotang/release-tryout"
+  },
+  "devDependencies": {
+    "del": "^2.2.0",
+    "fs": "0.0.2",
+    "gulp": "^3.9.1",
+    "gulp-bump": "^2.1.0",
+    "gulp-git": "^1.7.1",
+    "gulp-github-release": "^1.1.2",
+    "gulp-tag-version": "^1.3.0",
+    "gulp-util": "^3.0.7",
+    "path": "^0.12.7",
+    "run-sequence": "^1.1.5"
+  }
+}
