@@ -27,9 +27,9 @@ gulp.task('build', function () {
 //
 // Production Tasks
 //
-var packageDir = path.join(__dirname, '/package')
+var packageDir = __dirname + '/package'
 var packageSource = 'archive'
-var packageZip = 'archive-v' + pkg.version + '.zip'
+var packageZip = 'archive-' + pkg.version + '.zip'
 var destFilesDir = path.join(packageDir, packageSource, 'build')
 var destSourceDir = path.join(packageDir, packageSource, 'source')
 
@@ -45,7 +45,7 @@ gulp.task('release', ['package'], function () {
 
 // 納品用ディレクトリを削除
 gulp.task('package:clean', function (cb) {
-  del(packageDir + '/*', { force: true }, cb)
+  return del(packageDir + '/*', { force: true }, cb)
 })
 
 // ビルド済みのファイルを納品用ディレクトリにコピーする
@@ -56,7 +56,7 @@ gulp.task('package:copy-files', function () {
 
 // 納品用ビルド済みファイルを作成
 gulp.task('package:build', function (cb) {
-  del(destFilesDir, { force: true }, function (err) {
+  return del(destFilesDir, { force: true }, function (err) {
     if (err) return cb(err)
     runSequence('build', 'package:copy-files', cb)
   })
@@ -80,7 +80,7 @@ gulp.task('package:source', function (cb) {
 // 納品用ZIPを作成
 gulp.task('package:zip', function (cb) {
   pkg = JSON.parse(fs.readFileSync(path.join(destSourceDir, 'package.json')))
-  packageZip = 'archive-v' + pkg.version + '.zip'
+  packageZip = 'archive-' + pkg.version + '.zip'
   var cmd = [
     'cd ' + packageDir,
     'zip -q ' + packageZip + ' -r ' + packageSource

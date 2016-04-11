@@ -1,9 +1,11 @@
 {
+  "name": "release-tryout",
   "private": true,
   "version": "v0.0.0",
   "scripts": {
     "gulp": "gulp",
     "build": "gulp build",
+    "package": "gulp package",
     "release": "gulp release",
     "tag:patch": "gulp tag:patch",
     "tag:feature": "gulp tag:feature",
